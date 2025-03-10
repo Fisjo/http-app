@@ -1,11 +1,8 @@
-import { User } from "../../models/user";
-import usersStore from "../../store/users-store";
-import "./render-table.css";
+import usersStore from '../../store/users-store';
+import { showModal } from '../render-modal/render-modal';
+import './render-table.css';
 
-
-
-let table; 
-
+let table;
 
 const createTable = () => {
     const table = document.createElement('table');
@@ -27,6 +24,20 @@ const createTable = () => {
 }
 
 /**
+ * @param {MouseEvent} event 
+ */
+const tableSelectListener = (event) => {
+    const element = event.target.closest('.select-user');
+    if ( !element ) return;
+
+    const id = element.getAttribute('data-id');
+    showModal(id);
+}
+
+
+
+
+/**
  * 
  * @param {HTMLDivElement} element 
  */
@@ -38,8 +49,8 @@ export const renderTable = ( element ) => {
         table = createTable();
         element.append( table );
 
-        
-    }
+        table.addEventListener('click', tableSelectListener );
+        }
     
     let tableHTML = '';
     users.forEach( user => {

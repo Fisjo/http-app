@@ -1,12 +1,11 @@
-import { User } from "../models/user";
-
-
+import { User } from '../models/user';
 
 /**
  * 
  * @param {User} user 
  */
-export const userModelToLocalhost = (user) => {
+export const userModelToLocalhost = ( user ) => {
+
     const {
         avatar,
         balance,
@@ -24,6 +23,7 @@ export const userModelToLocalhost = (user) => {
         gender,
         id,
         isActive,
-        last_name: lastName, 
+        last_name: lastName,
     }
+
 }
