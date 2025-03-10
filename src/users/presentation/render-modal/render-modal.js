@@ -1,10 +1,12 @@
+import modalHtml from './render-modal.html?raw';
 import { User } from '../../models/user';
 import { getUserById } from '../../use-cases/get-user-by-id';
-import './render-modal.css';
-import modalHTML from './render-modal.html?raw';
 
-let modal, form; 
-let loadedUser; 
+import './render-modal.css';
+
+let modal, form;
+let loadedUser = {};
+
 /**
  * 
  * @param {String|Number} id 
@@ -23,6 +25,7 @@ export const hideModal = () => {
     form?.reset();
 }
 
+
 /**
  * 
  * @param {User} user 
@@ -36,6 +39,7 @@ const setFormValues = ( user ) => {
 }
 
 
+
 /**
  * 
  * @param {HTMLDivElement} element 
@@ -46,7 +50,7 @@ export const renderModal = ( element, callback ) => {
     if ( modal ) return;
 
     modal = document.createElement('div');
-    modal.innerHTML = modalHTML;
+    modal.innerHTML = modalHtml;
     modal.className = 'modal-container hide-modal';
     form = modal.querySelector('form');
 
